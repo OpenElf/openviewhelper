@@ -2,7 +2,7 @@
 <addons>
 <addon id="plugin.video.ewtnplayer"
        name="EWTN Player"
-       version="1.0.0"
+       version="1.0.1"
        provider-name="OpenView Helper">
   <requires>
    <import addon="xbmc.python" version="2.1"/>
@@ -12,7 +12,7 @@
         <provides>video</provides>
   </extension>
   <extension point="xbmc.addon.metadata">
-    <summary lang="en">Support for your OpenView powered TV</summary>
+    <summary lang="en">A simple media player for EWTN content</summary>
     <description lang="en">Web: http://openviewhelper.blogspot.co.uk/[CR][CR]email: openviewhelp@gmail.com[CR][CR]Twitter:  @OpenViewHelper</description>
     <platform>all</platform>
 	<language>en</language>
