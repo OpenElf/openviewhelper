@@ -1,6 +1,6 @@
 import urllib,urllib2,re,xbmcplugin,xbmcgui,xbmcaddon
 
-#EWTN Player.
+#EWTN Player. Just learning!
 
 pluginhandle=int(sys.argv[1])
 addon = xbmcaddon.Addon('plugin.video.ewtnplayer')
@@ -13,10 +13,12 @@ def CATEGORIES():
         addDir( 'News Nightly','http://www.youtube.com/playlist?list=PL9CQlldupc5_STtOyJ3gnmbEWyFDpRzw-',1,'http://laycatholics.files.wordpress.com/2013/09/ewtn-news-nightly-set.jpg',True)
         addDir( 'The Journey Home','http://www.youtube.com/playlist?list=PL97DC29A06F85B07E',1,'http://brightcove.vo.llnwd.net/e1/pd/1675170007001/1675170007001_2785771911001_vs-527178aee4b078301ebe35c3-1083021587001.jpg?pubId=1675170007001',True) 
         addDir( 'The World Over','http://www.youtube.com/playlist?list=PL0B89A05F9F6D3E47',1,'https://5e21104210-custmedia.vresp.com/8d19f99916/World%20Over.jpg',True) 
-        addDir( 'Live Catchup','http://www.youtube.com/playlist?list=PLA02A15AE776B6200',1,'http://images.zap2it.com/tvbanners/h3/AllPhotos/229688/p229688_b_h3_aa/ewtn-live.jpg',True) 
+        addDir( 'Live','http://www.youtube.com/playlist?list=PLA02A15AE776B6200',1,'http://images.zap2it.com/tvbanners/h3/AllPhotos/229688/p229688_b_h3_aa/ewtn-live.jpg',True) 
         addDir( 'Bookmark','http://www.youtube.com/playlist?list=PL66752F72224387D4',1,'http://tmsimg.com/showcards/h3/AllPhotos/229685/p229685_b_h3_aa.jpg',True) 
         addDir( 'Threshold of Hope','http://www.youtube.com/playlist?list=PLBC7E2C12010A545B',1,'http://i1.ytimg.com/vi/LyLh3zB8-64/hqdefault.jpg',True)
         addDir( 'Vaticano','http://www.youtube.com/playlist?list=PL0296666211FB63DA',1,'http://b.vimeocdn.com/ts/443/509/443509831_640.jpg',True)
+#added 1.0.2 note mode 3
+        addDir( 'The Chaplet of Divine Mercy in Song','http://www.youtube.com/watch?v=p5TGfisOKMM',3,'http://divinemercychant.excerptsofinri.com/images/divine-mercy-chaplet-front-cover.png',False)
 
                            
 def INDEX(url):
@@ -58,13 +60,24 @@ def get_params():
                                 
         return param
 
+def playstream(url):
+        ok=True
 
+        print "EWTNplayer playstream url is "+url
+# hard coded for the chaplet song, should be url passed or is parsed? ha ha
+# of course i assume this hard code would play but ...
+        liz = xbmcgui.ListItem(path='http://www.youtube.com/watch?v=p5TGfisOKMM')
+
+        xbmcplugin.setResolvedUrl(pluginhandle, True, liz)
+
+
+        return ok
 
 
 def playvideo(url):
         ok=True
 
-
+        print "EWTNplayer playvideo url is "+url
 
         liz = xbmcgui.ListItem(path=url)
 
@@ -75,8 +88,6 @@ def addDir(name,url,mode,iconimage,isfolder):
         u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)
         ok=True
         myicon=addon.getAddonInfo('fanart')
-# debug why IconImage is not working
-#       print "EWTNPLAYER - THE VALUE OF myicon IS " +myicon
         liz=xbmcgui.ListItem(name, iconImage=myicon, thumbnailImage=iconimage)
         liz.setInfo( type="Video", infoLabels={ "Title": name } )
         liz.setProperty('IsPlayable', 'true')
@@ -114,13 +125,17 @@ if mode==None or url==None or len(url)<1:
         CATEGORIES()
        
 elif mode==1:
-        print ""+url
+        print "EWTNplayer mode 1"+url
         INDEX(url)
         
 elif mode==2:
-        print ""+url
+        print "EWTNplayer mode 2"+url
         VIDEOLINKS(url,name)
 
-
+elif mode==3:
+        print "EWTNplayer mode 3 "+url
+# you need a function that just plays the URL and not send it to youtube
+# plugin like v1.0.0 stuff
+        playstream(url)
 
 xbmcplugin.endOfDirectory(int(sys.argv[1]))
