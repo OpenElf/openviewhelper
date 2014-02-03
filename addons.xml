@@ -20,6 +20,26 @@
   </extension>
 </addon>
 
+<addon id="plugin.video.openviewportal"
+       name="OpenView"
+       version="1.0.0"
+       provider-name="OpenView Helper">
+  <requires>
+   <import addon="xbmc.python" version="2.1"/>
+   <import addon="plugin.video.youtube" version="3.0.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">OpenView help, support and fun</summary>
+    <description lang="en">This addon provides OpenView help, support and fun![CR][CR]email: openviewhelp@gmail.com[CR][CR]Twitter:  @OpenViewHelper</description>
+    <platform>all</platform>
+	<language>en</language>
+	<email>report any issues with this addon to openviewhelp@gmail.com</email>
+  </extension>
+</addon>
+
 <addon id="repository.openviewhelper" name="OpenElf's Addon Repository" version="1.0" provider-name="OpenElf">
 	<extension point="xbmc.addon.repository" name="OpenElf's Addon Repository">
 		<info compressed="false">http://github.com/OpenElf/openviewhelper/raw/master/addons.xml</info>
