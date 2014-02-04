@@ -19,7 +19,7 @@ def toplevelmenu():
 
         liz.setProperty('IsPlayable', 'true')
 
-        xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url='/home/pi/.xbmc/addons/plugin.video.openviewportal/videos/test_video.mp4',listitem=liz,isFolder=False)
+        xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url='/home/pi/videos/test_video.mp4',listitem=liz,isFolder=False)
 
 
         addDir('Getting Started','http://www.youtube.com/playlist?list=PLF4E7093F628DD57B',3,'http://2.bp.blogspot.com/-UsCN852hjUg/Ucm0KsEeXFI/AAAAAAAAAIQ/LGSIWTbydqA/s1600/getting_started.jpg',True)
@@ -38,7 +38,7 @@ def toplevelmenu():
 # gettingstarted(url) lists all the static content that is shipped
 # with the product. 
 # To play a local video you have to give the full path like this:
-# /home/pi/.xbmc/addons/plugin.video.openviewportal/videos/video_calibration.mp4
+# /home/pi/video_calibration.mp4
 
 
 def gettingstarted(url):
@@ -75,13 +75,13 @@ def gettingstarted(url):
 
 # isFolder=False because this is a playable resource
 
-        xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url="/home/pi/.xbmc/addons/plugin.video.openviewportal/videos/play_pause_stop.mp4",listitem=lia,isFolder=False)
+        xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url="/home/pi/videos/play_pause_stop.mp4",listitem=lia,isFolder=False)
 
-        xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url="/home/pi/.xbmc/addons/plugin.video.openviewportal/videos/wired_connection.mp4",listitem=lib,isFolder=False)
+        xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url="/home/pi/videos/wired_connection.mp4",listitem=lib,isFolder=False)
 
-        xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url="/home/pi/.xbmc/addons/plugin.video.openviewportal/videos/wireless_connection.mp4",listitem=lic,isFolder=False)
+        xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url="/home/pi/videos/wireless_connection.mp4",listitem=lic,isFolder=False)
 
-        xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url="/home/pi/.xbmc/addons/plugin.video.openviewportal/videos/video_calibration.mp4",listitem=liz,isFolder=False)
+        xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url="/home/pi/videos/video_calibration.mp4",listitem=liz,isFolder=False)
 
 
         return True
@@ -163,7 +163,7 @@ def jackstash():
 
 
 
-    return True
+        return True
 
 # put this in your default.py
 class main (object):
