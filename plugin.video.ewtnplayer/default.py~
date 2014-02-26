@@ -5,20 +5,20 @@ import urllib,urllib2,re,xbmcplugin,xbmcgui,xbmcaddon
 pluginhandle=int(sys.argv[1])
 addon = xbmcaddon.Addon('plugin.video.ewtnplayer')
 
-
+# v1.1.0 changed to YT gdata api links
 
 def CATEGORIES():
-        addDir('Mother Angelica Live Classics','http://www.youtube.com/playlist?list=PLF4E7093F628DD57B',1,'http://www.ewtn.com/Mother_041902.jpg',True)
-        addDir( 'Life On The Rock','http://www.youtube.com/playlist?list=PL5ACC9477FE945B19',1,'http://www.passionistnuns.org/blog/wp-content/themes/fallseason/images/LifeontheRocklogoblog.jpg',True)
-        addDir( 'News Nightly','http://www.youtube.com/playlist?list=PL9CQlldupc5_STtOyJ3gnmbEWyFDpRzw-',1,'http://laycatholics.files.wordpress.com/2013/09/ewtn-news-nightly-set.jpg',True)
-        addDir( 'The Journey Home','http://www.youtube.com/playlist?list=PL97DC29A06F85B07E',1,'http://brightcove.vo.llnwd.net/e1/pd/1675170007001/1675170007001_2785771911001_vs-527178aee4b078301ebe35c3-1083021587001.jpg?pubId=1675170007001',True) 
-        addDir( 'The World Over','http://www.youtube.com/playlist?list=PL0B89A05F9F6D3E47',1,'https://5e21104210-custmedia.vresp.com/8d19f99916/World%20Over.jpg',True) 
-        addDir( 'Live','http://www.youtube.com/playlist?list=PLA02A15AE776B6200',1,'http://images.zap2it.com/tvbanners/h3/AllPhotos/229688/p229688_b_h3_aa/ewtn-live.jpg',True) 
-        addDir( 'Bookmark','http://www.youtube.com/playlist?list=PL66752F72224387D4',1,'http://tmsimg.com/showcards/h3/AllPhotos/229685/p229685_b_h3_aa.jpg',True) 
-        addDir( 'Threshold of Hope','http://www.youtube.com/playlist?list=PLBC7E2C12010A545B',1,'http://i1.ytimg.com/vi/LyLh3zB8-64/hqdefault.jpg',True)
-        addDir( 'Vaticano','http://www.youtube.com/playlist?list=PL0296666211FB63DA',1,'http://b.vimeocdn.com/ts/443/509/443509831_640.jpg',True)
+        addDir('Mother Angelica Live Classics','https://gdata.youtube.com/feeds/api/playlists/PLF4E7093F628DD57B?start-index=1&max-results=50',1,'http://www.ewtn.com/Mother_041902.jpg',True)
+        addDir( 'Life On The Rock','https://gdata.youtube.com/feeds/api/playlists/PL5ACC9477FE945B19?start-index=1&max-results=50',1,'http://www.passionistnuns.org/blog/wp-content/themes/fallseason/images/LifeontheRocklogoblog.jpg',True)
+        addDir( 'News Nightly','https://gdata.youtube.com/feeds/api/playlists/PL9CQlldupc5_STtOyJ3gnmbEWyFDpRzw-?start-index=1&max-results=50',1,'http://laycatholics.files.wordpress.com/2013/09/ewtn-news-nightly-set.jpg',True)
+        addDir( 'The Journey Home','https://gdata.youtube.com/feeds/api/playlists/PL97DC29A06F85B07E?start-index=1&max-results=50',1,'http://brightcove.vo.llnwd.net/e1/pd/1675170007001/1675170007001_2785771911001_vs-527178aee4b078301ebe35c3-1083021587001.jpg?pubId=1675170007001',True) 
+        addDir( 'The World Over','https://gdata.youtube.com/feeds/api/playlists/PL0B89A05F9F6D3E47?start-index=1&max-results=50',1,'https://5e21104210-custmedia.vresp.com/8d19f99916/World%20Over.jpg',True) 
+        addDir( 'Live','https://gdata.youtube.com/feeds/api/playlists/PLA02A15AE776B6200?start-index=1&max-results=50',1,'http://images.zap2it.com/tvbanners/h3/AllPhotos/229688/p229688_b_h3_aa/ewtn-live.jpg',True) 
+        addDir( 'Bookmark','https://gdata.youtube.com/feeds/api/playlists/PL66752F72224387D4?start-index=1&max-results=50',1,'http://tmsimg.com/showcards/h3/AllPhotos/229685/p229685_b_h3_aa.jpg',True) 
+        addDir( 'Threshold of Hope','https://gdata.youtube.com/feeds/api/playlists/PLBC7E2C12010A545B?start-index=1&max-results=50',1,'http://i1.ytimg.com/vi/LyLh3zB8-64/hqdefault.jpg',True)
+        addDir( 'Vaticano','https://gdata.youtube.com/feeds/api/playlists/PL0296666211FB63DA?start-index=1&max-results=50',1,'http://b.vimeocdn.com/ts/443/509/443509831_640.jpg',True)
 #added 1.0.2 note mode 3
-        addDir( 'The Chaplet of Divine Mercy in Song','http://www.youtube.com/watch?v=p5TGfisOKMM',3,'http://divinemercychant.excerptsofinri.com/images/divine-mercy-chaplet-front-cover.png',False)
+        addDir( 'The Chaplet of Divine Mercy in Song','p5TGfisOKMM',3,'http://divinemercychant.excerptsofinri.com/images/divine-mercy-chaplet-front-cover.png',False)
 
                            
 def INDEX(url):
@@ -27,12 +27,29 @@ def INDEX(url):
         response = urllib2.urlopen(req)
         link=response.read()
         response.close()
-        match=re.compile('<meta itemprop="name" content=".+?">\n  <link itemprop="thumbnailUrl" href="(.+?)">\n\n      <div class="thumb-container">\n    <a href="(.+?)" title="(.+?)"').findall(link)
-        for thumbnail,url,name in match:
-                splitname=name.partition('-')
-                name=splitname[2]
-                name=name.strip()
+
+#v1.1.0 scraper changed from
+#        match=re.compile('<meta itemprop="name" content=".+?">\n  <link itemprop="thumbnailUrl" href="(.+?)">\n\n      <div class="thumb-container">\n    <a href="(.+?)" title="(.+?)"').findall(link)
+
+# to
+
+        match=re.compile("href='https://m.youtube.com/details.?v=(.+?)'/.+?<media\:descriptio[^>]+>([^<]+)</media\:description>.+?<media\:thumbnail url='([^']+)'.+?<media:title type='plain'>(.+?)/media:title>",re.DOTALL).findall(link)
+
+#v1.1.0 changed from
+
+#        for thumbnail,url,name in match:
+#                splitname=name.partition('-')
+#                name=splitname[2]
+#                name=name.strip()
+#                addDir(name,url,2,thumbnail,False)
+
+# to
+
+        for url,desc,thumbnail,name in reversed(match):
+
+                name=name.replace('<','')
                 addDir(name,url,2,thumbnail,False)
+
 
 def VIDEOLINKS(url,name):
         id=url.lstrip("/watch?v=")
@@ -60,13 +77,13 @@ def get_params():
                                 
         return param
 
-def playstream(url):
+def playstream(videoid):
         ok=True
-
+        url = "plugin://plugin.video.youtube/?path=/root/video&action=play_video&videoid=" + videoid
         print "EWTNplayer playstream url is "+url
 # hard coded for the chaplet song, should be url passed or is parsed? ha ha
 # of course i assume this hard code would play but ...
-        liz = xbmcgui.ListItem(path='http://www.youtube.com/watch?v=p5TGfisOKMM')
+        liz = xbmcgui.ListItem(path=url)
 
         xbmcplugin.setResolvedUrl(pluginhandle, True, liz)
 

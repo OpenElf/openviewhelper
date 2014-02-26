@@ -1,0 +1,10 @@
+[B]v1.0.2 (17 February 2014):[/B]
+  - Added ov resolvers
+  - Added addon userdata directory
+  - Added artwork
+  - YT gdata api and new YT srcaper
+
+[B]v1.0.1 (4 February 2014):[/B]
+  - Added into repo
+[B]v1.0.0 (Initial Release):[/B]
+

@@ -4,4 +4,5 @@
 - general clean up and test auto update
 [B]Version 1.0.2[/B]
 - Chaplet song added
-
+[B]Version 1.1.0[/B]
+- Source webpage changed by YT causing scraper rewrite

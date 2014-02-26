@@ -4,3 +4,5 @@ v1.0.1
 clean up and check autoupdate
 V1.0.2
 Add Chaplet song
+v1.1.0
+Source webpage changed by YT causing scraper rewrite

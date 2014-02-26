@@ -1,8 +1,0 @@
-This is my first attempt at this kind of stuff and is really just for
-my own learning.  I am not a developer/programmer and I have just 
-started to learn python.  Also I have never used Git until today.
-This repo is all about creating an XBMC addon.  The code started out
-from a tutorial at:
- http://wiki.xbmc.org/index.php?title=How-to:Write_plugins_for_XBMC
-This EWTN-Player addon scrapes some YouTube EWTN channels to play
-within XBMC.
