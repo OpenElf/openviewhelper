@@ -49,8 +49,6 @@ if not os.path.exists(datapath): os.makedirs(datapath)
 
 sys.path.insert( 0,os.path.join( ovpath, 'resources', 'libs' ) )
 
-#imports of things bundled in the addon
-import ovresolvers
 
 # global variables used within many functions
 
