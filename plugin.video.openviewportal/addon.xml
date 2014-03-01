@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.video.openviewportal"
        name="OpenView"
-       version="1.0.2" 
+       version="1.0.3" 
        provider-name="OpenView Helper">
   <requires>
         <import addon="xbmc.python" version="2.1.0"/>
-        <import addon="script.module.simplejson"/>
-        <import addon="script.module.elementtree"/>
-        <import addon="script.module.beautifulsoup"/>
-        <import addon="script.module.metahandler" version="1.0.0"/>
         <import addon="script.module.t0mm0.common" version="1.1.0"/>
-        <import addon="script.common.plugin.cache" version="0.9.0"/>
         <import addon="plugin.video.youtube" version="3.0.0"/>
   </requires>
   <extension point="xbmc.python.pluginsource" library="default.py">
@@ -18,7 +13,7 @@
   </extension>
   <extension point="xbmc.addon.metadata">
     <summary lang="en">OpenView Getting Started, Status, Movies and TV Shows</summary>
-    <description lang="en">This addon provides OpenView Status, Support, Movies and TV Shows![CR][CR]email: openviewhelp@gmail.com[CR][CR]Twitter:  @OpenViewHelper</description>
+    <description lang="en">This addon provides OpenView Status and Support[CR][CR]email: openviewhelp@gmail.com[CR][CR]Twitter:  @OpenViewHelper</description>
     <platform>all</platform>
 	<language>en</language>
 	<email>report any issues with this addon to openviewhelp@gmail.com</email>
