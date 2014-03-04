@@ -1,3 +1,10 @@
+[B]v1.0.4 (04 March 2014):[/B]
+  - Licence ID displayed in Status
+  - Added script directory with files
+  - This release coincides with major changes to OV img 04032014 that now
+supports software tied to hardware, strong branding, secure SSH, OV program
+settings. All this documented in README.txt file ov OV home dir.
+
 [B]v1.0.3 (01 March 2014):[/B]
   - removed ov resolvers, not needed
   - added message system for OV status

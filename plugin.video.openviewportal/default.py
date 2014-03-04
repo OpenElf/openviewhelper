@@ -55,6 +55,20 @@ sys.path.insert( 0,os.path.join( ovpath, 'resources', 'libs' ) )
 pluginhandle=int(sys.argv[1])
 fanart = addon.get_fanart()
 
+def getserial():
+
+        cpuserial = "0000000000000000"
+        try:
+            f = open('/proc/cpuinfo','r')
+            for line in f:
+                if line[0:6]=='Serial':
+                    cpuserial = line[10:26]
+            f.close()
+        except:
+            cpuserial = "ERROR000000000"
+
+        return cpuserial
+
 # toplevelmenu() is invoked when main() is initially called.
 # The params will initially be none.  Some of the directories are
 # playable, for example 'Test Video'.
@@ -133,22 +147,18 @@ def showMessage():
             receivedseqnum = f.read()
             f.close()
 
-            print 'showMessage ... The receivedseqnum is ' +receivedseqnum
+
             for sendseqnum,line1,line2,line3 in match:
                 if int(sendseqnum) > int(receivedseqnum):
-                    print "The sendseqnum is " +sendseqnum
 
                     dialog = xbmcgui.Dialog()
                     ok=dialog.ok('[B]Important OpenView Announcement![/B]', str(line1) ,str(line2),str(line3))
 
             nextexpectedseqnum = int(sendseqnum) + 1
-            print 'The nextexpectedseqnum is ' +str(nextexpectedseqnum)
             
-
             f = open(receivedseqnumpath, 'w+')
             f.write(str(nextexpectedseqnum))
-            f.close                  
-                    
+            f.close                                    
     
         else: print 'http://openviewrepo.x10.mx/ Down'
 
@@ -163,8 +173,6 @@ def showMessage():
 
 
 def gettingstarted(url):
-
-        print "entering gettingstarted() .........."
 
         lia=xbmcgui.ListItem('Play, Pause & Stop', iconImage="/home/pi/.xbmc/addons/plugin.video.openviewportal/images/play_pause_stop.jpg", thumbnailImage="/home/pi/.xbmc/addons/plugin.video.openviewportal/images/play_pause_stop.jpg")
 
@@ -215,11 +223,17 @@ def gettingstarted(url):
 
 def addDirxml(url):
 
+        xmlurl = url
+
 # Display Important OpenView Annoucements to the user using dialog boxes
 
         showMessage()
 
-        xmlurl = url
+# Display OpenView Licence
+
+        licence = getserial()
+        name = "Your OpenView Licence is " +licence
+        addDir(name,xmlurl,4,'nill',True,fanart)
 
 # url parsed points to xml file that is located on a server.
 
@@ -261,8 +275,6 @@ def addDirxml(url):
 # Currently two YT playlists are being used 'status' and 'howto'
 
 def secondlevelmenu(url):
-
-        print "secondlevelmenu() the URL is " +url
 
         req = urllib2.Request(url)
         req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3')
@@ -322,7 +334,7 @@ class main (object):
         global action
         params = {}
 
-        print "main() sys.argv[2] is " +sys.argv[2]
+#        print "main() sys.argv[2] is " +sys.argv[2]
 
 # This is a callback string example
 # ?mode=1&name=Mother%20Angelica%20Live%20Classics&url=http%3a%2f%2f
@@ -330,8 +342,8 @@ class main (object):
 
         splitparams = sys.argv[2][sys.argv[2].find('?') + 1:].split('&')
 
-        print "main() splitparams list are "
-        print ", ".join(splitparams)
+#        print "main() splitparams list are "
+#        print ", ".join(splitparams)
 
 # spltparams is a list, the contents are
 # mode=1, name=Mother%20Angelica%20Live%20Classics, url=http%3a%2f%2f
@@ -345,9 +357,9 @@ class main (object):
                 except: value = splitparam[1]
                 params[key] = value
 
-        print "main() params dictionary are "
-        for key in params:
-	        print key, params[key]
+#        print "main() params dictionary are "
+#        for key in params:
+#	        print key, params[key]
 
 # params key/value pairs are
 # : main() params dictionary are
@@ -375,7 +387,7 @@ class main (object):
         elif mode == "1"  :      secondlevelmenu(url)
         elif mode == "2"  :      playvideo(url)
         elif mode == "3"  :      gettingstarted(url)
-        elif mode == "4" :    addDirxml(url)
+        elif mode == "4"  :      addDirxml(url)
 
         xbmcplugin.endOfDirectory(int(sys.argv[1]))
         return
