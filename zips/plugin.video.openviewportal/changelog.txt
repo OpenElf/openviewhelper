@@ -1,3 +1,9 @@
+[B]v1.0.5 (11 March 2014):[/B]
+  - Broadcast message when XBMC starts
+  - OV update from server updatefromremote.py
+  - This release conicides with OV img 11032014 that fixed long reboot time,
+placed BBC iplayer on music home.
+
 [B]v1.0.4 (04 March 2014):[/B]
   - Licence ID displayed in Status
   - Added script directory with files

@@ -3,7 +3,7 @@
 ############### Imports ################################################
 
 import sys,os
-import xbmc,xbmcplugin,xbmcgui,xbmcaddon
+import xbmc,xbmcplugin,xbmcgui,xbmcaddon, urllib2, re
 
 ########################################################################
 
@@ -17,6 +17,32 @@ softwarekeypath = os.path.join(datapath, 'softwarekey')
 # if the directories are not in place then make them
  
 if not os.path.exists(datapath): os.makedirs(datapath)
+
+def broadcastMessage():
+
+        url = 'http://openviewrepo.x10.mx/xml/startup_message.xml'
+
+        req = urllib2.Request(url)
+        req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3')
+        response = urllib2.urlopen(req)
+        link=response.read()
+        response.close()
+
+        link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
+
+        match=re.compile('<message><sendseqnum>(.+?)</sendseqnum><line1>(.+?)</line1><line2>(.+?)</line2><line3>(.+?)</line3></message>').findall(link)
+
+
+        if len(match)>0:
+
+            for sendseqnum,line1,line2,line3 in match:
+
+               dialog = xbmcgui.Dialog()
+               ok=dialog.ok('[B]Welcome to OpenView[/B]', str(line1) ,str(line2),str(line3))
+                                      
+        else: print 'http://openviewrepo.x10.mx/ Down'
+
+        return True
 
 # Extract serial from cpuinfo file
 
@@ -77,4 +103,7 @@ if hardwarekey != softwarekey:
        
         powerdown()
 
+# broadcast message
+
+broadcastMessage()
            

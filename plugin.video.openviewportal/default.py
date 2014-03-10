@@ -49,6 +49,10 @@ if not os.path.exists(datapath): os.makedirs(datapath)
 
 sys.path.insert( 0,os.path.join( ovpath, 'resources', 'libs' ) )
 
+# import of OV modules
+import updatefromremote
+# update
+updatefromremote.begin()
 
 # global variables used within many functions
 
@@ -222,6 +226,9 @@ def gettingstarted(url):
 # It is not called by anything else.
 
 def addDirxml(url):
+
+        # update
+        updatefromremote.begin()
 
         xmlurl = url
 
