@@ -83,10 +83,10 @@ def toplevelmenu():
 # are working. This plays a local SD file and does not require internet
 # connection.
         
-        liz=xbmcgui.ListItem('[COLOR lime]  Test Video[/COLOR]', iconImage='http://openviewrepo.x10.mx/ov_icon_test_video.jpg', thumbnailImage='http://openviewrepo.x10.mx/ov_icon_test_video.jpg')
+        liz=xbmcgui.ListItem('[COLOR lime]  Test Video[/COLOR]', iconImage='https://raw.github.com/OpenElf/openviewimages/master/ov_icon_test_video.jpg', thumbnailImage='https://raw.github.com/OpenElf/openviewimages/master/ov_icon_test_video.jpg')
 
         liz.setInfo( type="Video", infoLabels={ "Title": 'Test Video' } )
-        liz.setProperty('fanart_image', 'http://openviewrepo.x10.mx/ov_test_video.jpg')
+        liz.setProperty('fanart_image', 'https://raw.github.com/OpenElf/openviewimages/master/ov_test_video.jpg')
 
 # set listitem to playable
 
@@ -99,20 +99,22 @@ def toplevelmenu():
 # points to a YT playlist but this is meaningless because the only
 # used will be SD based.
 
-        addDir('[COLOR yellow]  OpenView Getting Started[/COLOR]','http://www.youtube.com/playlist?list=PLF4E7093F628DD57B',3,'http://openviewrepo.x10.mx/ov_icon_get_started.jpg',True,'http://openviewrepo.x10.mx/ov_3.jpg')
+        addDir('[COLOR yellow]  OpenView Getting Started[/COLOR]','http://www.youtube.com/playlist?list=PLF4E7093F628DD57B',3,'https://raw.github.com/OpenElf/openviewimages/master/ov_icon_get_started.jpg',True,'https://raw.github.com/OpenElf/openviewimages/master/ov_getting_started.jpg')
 
 # OpenView Status directory is not playable.  The purpose is to invoke
 # mode 4 that will call the addDirxml(url) function.  The url parsed
 # points to a status.xml file that is located on a public internet
 # server.  The content of this file concerns OpenView status updates.
 
-        addDir('[COLOR yellow]  OpenView Status[/COLOR]','http://openviewrepo.x10.mx/xml/status.xml',4,'http://openviewrepo.x10.mx/ov_icon_status.jpg',True,'http://openviewrepo.x10.mx/ov_status.jpg')
+
+        addDir('[COLOR yellow]  OpenView Status[/COLOR]','https://raw.github.com/OpenElf/openviewmessages/master/status.xml',4,'https://raw.github.com/OpenElf/openviewimages/master/ov_icon_status.jpg',True,'https://raw.github.com/OpenElf/openviewimages/master/ov_status.jpg')
+
 
 # OpenView Howto directory is not playable.  The purpose is to invoke
 # mode 1 that will call secondlevelmenu(url) function.  The url parsed
 # points to playlist on YT.
 
-        addDir('[COLOR yellow]  OpenView Howto[/COLOR]','https://gdata.youtube.com/feeds/api/playlists/PLOg_aABUd4ElXhIaP9KzblWCb6Jwhdeh-?start-index=1&max-results=50',1,'http://openviewrepo.x10.mx/ov_icon_howto.jpg',True,'http://openviewrepo.x10.mx/ov_howtos.jpg')
+        addDir('[COLOR yellow]  OpenView Howto[/COLOR]','https://gdata.youtube.com/feeds/api/playlists/PLOg_aABUd4ElXhIaP9KzblWCb6Jwhdeh-?start-index=1&max-results=50',1,'https://raw.github.com/OpenElf/openviewimages/master/ov_icon_howto.jpg',True,'https://raw.github.com/OpenElf/openviewimages/master/ov_howtos.jpg')
 
         return True
 
@@ -125,7 +127,7 @@ def toplevelmenu():
 
 def showMessage():
 
-        url = 'http://openviewrepo.x10.mx/xml/message.xml'
+        url = 'https://raw.github.com/OpenElf/openviewmessages/master/message.xml'
 
         req = urllib2.Request(url)
         req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3')
@@ -164,7 +166,7 @@ def showMessage():
             f.write(str(nextexpectedseqnum))
             f.close                                    
     
-        else: print 'http://openviewrepo.x10.mx/ Down'
+        else: print 'http://github.com/ Down'
 
         return True
 
@@ -293,7 +295,7 @@ def secondlevelmenu(url):
         for url,desc,thumbnail,name in reversed(match):
 
                 name=name.replace('<','')
-                addDir(name,url,2,thumbnail,False,'http://openviewrepo.x10.mx/ov_theatre.jpg')
+                addDir(name,url,2,thumbnail,False,'https://raw.github.com/OpenElf/openviewimages/master/ov_theatre.jpg')
 
 
 # build directories

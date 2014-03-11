@@ -20,7 +20,7 @@ if not os.path.exists(datapath): os.makedirs(datapath)
 
 def broadcastMessage():
 
-        url = 'http://openviewrepo.x10.mx/xml/startup_message.xml'
+        url = 'https://raw.github.com/OpenElf/openviewmessages/master/startup_message.xml'
 
         req = urllib2.Request(url)
         req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3')
@@ -40,7 +40,7 @@ def broadcastMessage():
                dialog = xbmcgui.Dialog()
                ok=dialog.ok('[B]Welcome to OpenView[/B]', str(line1) ,str(line2),str(line3))
                                       
-        else: print 'http://openviewrepo.x10.mx/ Down'
+        else: print 'http://github.com Down'
 
         return True
 
