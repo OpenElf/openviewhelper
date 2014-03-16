@@ -1,3 +1,7 @@
+[B]v1.0.7 (16 March 2014):[/B]
+  - Keyboard control added
+
+
 [B]v1.0.6 (12 March 2014):[/B]
   - Messages moved from X10 to Github, modified ov_script.py and default.py
   - OV images moved from x10 to Github

@@ -116,6 +116,20 @@ def toplevelmenu():
 
         addDir('[COLOR yellow]  OpenView Howto[/COLOR]','https://gdata.youtube.com/feeds/api/playlists/PLOg_aABUd4ElXhIaP9KzblWCb6Jwhdeh-?start-index=1&max-results=50',1,'https://raw.github.com/OpenElf/openviewimages/master/ov_icon_howto.jpg',True,'https://raw.github.com/OpenElf/openviewimages/master/ov_howtos.jpg')
 
+# This is the playable Keyboard Video to the keyboard controls
+# This plays a remote youtube video.
+        
+        liz=xbmcgui.ListItem('[COLOR yellow]  OpenView Keyboard[/COLOR]', iconImage='https://raw.github.com/OpenElf/openviewimages/master/ov_icon_keyboard.jpg', thumbnailImage='https://raw.github.com/OpenElf/openviewimages/master/ov_icon_keyboard.jpg')
+
+        liz.setInfo( type="Video", infoLabels={ "Title": 'OpenView Keyboard' } )
+        liz.setProperty('fanart_image', 'https://raw.github.com/OpenElf/openviewimages/master/ov_keyboard.jpg')
+
+# set listitem to playable
+
+        liz.setProperty('IsPlayable', 'true')
+
+        xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url='plugin://plugin.video.youtube/?path=/root/video&action=play_video&videoid=_ichUqpoo28',listitem=liz,isFolder=False)
+
         return True
 
 # showMessage() displays dialog boxes to the user based on the contents
