@@ -1,8 +1,11 @@
-v1.0
-Initial Release
-v1.0.1
-clean up and check autoupdate
-V1.0.2
-Add Chaplet song
-v1.1.0
-Source webpage changed by YT causing scraper rewrite
+[B]Version 1.1.1 19th March 2014[/B]
+  - UA added
+[B]Version 1.1.0[/B]
+  - Source webpage changed by YT causing scraper rewrite
+[B]Version 1.0.2[/B]
+  - Chaplet song added
+[B]Version 1.0.1[/B]
+  - general clean up and test auto update
+[B]Version 1.0.0[/B]
+  - Initial version
+

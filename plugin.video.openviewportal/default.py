@@ -51,8 +51,11 @@ sys.path.insert( 0,os.path.join( ovpath, 'resources', 'libs' ) )
 
 # import of OV modules
 import updatefromremote
+import ua
+
 # update
 updatefromremote.begin()
+
 
 # global variables used within many functions
 
@@ -140,6 +143,7 @@ def toplevelmenu():
 # the same message over and over again.
 
 def showMessage():
+    
 
         url = 'https://raw.github.com/OpenElf/openviewmessages/master/message.xml'
 
@@ -180,7 +184,9 @@ def showMessage():
             f.write(str(nextexpectedseqnum))
             f.close                                    
     
-        else: print 'http://github.com/ Down'
+        else: 
+            print 'http://github.com/ Down'
+            ua.update("exception","github")
 
         return True
 
@@ -193,6 +199,8 @@ def showMessage():
 
 
 def gettingstarted(url):
+
+        ua.update("openview","gettingstarted")
 
         lia=xbmcgui.ListItem('Play, Pause & Stop', iconImage="/home/pi/.xbmc/addons/plugin.video.openviewportal/images/play_pause_stop.jpg", thumbnailImage="/home/pi/.xbmc/addons/plugin.video.openviewportal/images/play_pause_stop.jpg")
 
@@ -242,6 +250,8 @@ def gettingstarted(url):
 # It is not called by anything else.
 
 def addDirxml(url):
+
+        ua.update("openview","status")
 
         # update
         updatefromremote.begin()
@@ -299,6 +309,8 @@ def addDirxml(url):
 
 def secondlevelmenu(url):
 
+        ua.update("openview","howto")
+
         req = urllib2.Request(url)
         req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3')
         response = urllib2.urlopen(req)
@@ -335,6 +347,8 @@ def addDir(name,url,mode,iconimage,isfolder,fanart):
 #        ?path=/root/video&action=play_video&videoid=CPCQsOAjEys
 
 def playvideo(url):
+
+        ua.update("exception",url)
 
         id = url
 

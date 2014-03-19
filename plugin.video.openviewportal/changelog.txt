@@ -1,3 +1,6 @@
+[B]v1.0.8 (19 March 2014):[/B]
+  - UA added ua.py
+
 [B]v1.0.7 (16 March 2014):[/B]
   - Keyboard control added
 

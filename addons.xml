@@ -2,7 +2,7 @@
 <addons>
 <addon id="plugin.video.ewtnplayer"
        name="EWTN Player"
-       version="1.1.0"
+       version="1.1.1"
        provider-name="OpenView Helper">
   <requires>
    <import addon="xbmc.python" version="2.1"/>
@@ -22,7 +22,7 @@
 
 <addon id="plugin.video.openviewportal"
        name="OpenView"
-       version="1.0.7"
+       version="1.0.8"
        provider-name="OpenView Helper">
   <requires>
         <import addon="xbmc.python" version="2.1.0"/>

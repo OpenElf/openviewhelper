@@ -12,7 +12,22 @@ import xbmc,xbmcplugin,xbmcgui,xbmcaddon, urllib2, re
 # define some paths
 
 datapath = '/home/pi/.xbmc/userdata/addon_data/plugin.video.openviewportal/'
+ovpath = '/home/pi/.xbmc/addons/plugin.video.openviewportal/'
 softwarekeypath = os.path.join(datapath, 'softwarekey')
+
+
+# update sys.path
+sys.path.insert( 0,os.path.join( ovpath, 'resources', 'libs' ) )
+
+# import ov lib
+
+import ua
+
+# update ua
+
+ua.update("system","bootup")
+
+
 
 # if the directories are not in place then make them
  

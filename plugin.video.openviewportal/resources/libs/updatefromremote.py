@@ -47,6 +47,7 @@ def getupdaterxmlfile():
     ftp = ftplib.FTP(server)
     if not ftp.login(username, password):
         print 'OV - updatefromremote.py - http://openviewrepo.x10.mx/ Down'
+        ua.update("exception","x10down")
         return False
         
  
@@ -57,6 +58,7 @@ def getupdaterxmlfile():
 
     if not ftp.nlst(xmlupdaterfile):
         print 'OV - updatefromremote.py - Missing file called ' +xmlupdaterfile
+        ua.update("exception","xmlupdatefile")
         return False
  
 # Loop through matching files and download each one individually
@@ -146,7 +148,9 @@ def checkupdatelevel():
                 # update is needed
                 return True                                
     
-    else: print 'OV - http://openviewrepo.x10.mx/ Down'
+    else:
+        print 'OV - http://openviewrepo.x10.mx/ Down'
+        ua.update("exception","x10down")
 
     # False because no update is needed
     return False
@@ -185,6 +189,7 @@ def update():
         # Establish connection to server
         ftp = ftplib.FTP(server)
         if not ftp.login(username, password):
+            ua.update("exception","ftplogin")
             return False
         
         # Change to the proper directory on server
@@ -193,12 +198,14 @@ def update():
         # Check to make sure file is on server
         if not ftp.nlst(server_file):
             print 'OV - updatefromremote.py - Missing file called ' +server_file
+            ua.update("exception","ftpfilemissing")
             return False
 
         # copy files from server to OV
         for filename in ftp.nlst(server_file):
             fhandle = open(filename, 'wb')
             print 'OV - updatefromremote.py - Getting ' + filename
+            ua.update("openview","ftpupdate")
             ftp.retrbinary('RETR ' + filename, fhandle.write)
             fhandle.close()
 
@@ -225,6 +232,7 @@ def begin():
             # is there a new update?
             newupdate = checkupdatelevel()
             if newupdate == True:
+                ua.update("openview","newupdate")
                 # update
                 xbmc.executebuiltin("XBMC.Notification(OpenView Update,New Update detected,3000,"")")
                 xbmc.executebuiltin("XBMC.Notification(OpenView Update,Updating...,3000,"")")

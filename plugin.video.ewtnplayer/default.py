@@ -1,6 +1,17 @@
 import urllib,urllib2,re,xbmcplugin,xbmcgui,xbmcaddon
+import os
+
 
 #EWTN Player. Just learning!
+
+
+ovpath = '/home/pi/.xbmc/addons/plugin.video.openviewportal/'
+# update sys.path
+sys.path.insert( 0,os.path.join( ovpath, 'resources', 'libs' ) )
+
+# import ov lib
+
+import ua
 
 pluginhandle=int(sys.argv[1])
 addon = xbmcaddon.Addon('plugin.video.ewtnplayer')
@@ -8,6 +19,9 @@ addon = xbmcaddon.Addon('plugin.video.ewtnplayer')
 # v1.1.0 changed to YT gdata api links
 
 def CATEGORIES():
+
+        ua.update("ewtn","started")
+
         addDir('Mother Angelica Live Classics','https://gdata.youtube.com/feeds/api/playlists/PLF4E7093F628DD57B?start-index=1&max-results=50',1,'http://www.ewtn.com/Mother_041902.jpg',True)
         addDir( 'Life On The Rock','https://gdata.youtube.com/feeds/api/playlists/PL5ACC9477FE945B19?start-index=1&max-results=50',1,'http://www.passionistnuns.org/blog/wp-content/themes/fallseason/images/LifeontheRocklogoblog.jpg',True)
         addDir( 'News Nightly','https://gdata.youtube.com/feeds/api/playlists/PL9CQlldupc5_STtOyJ3gnmbEWyFDpRzw-?start-index=1&max-results=50',1,'http://laycatholics.files.wordpress.com/2013/09/ewtn-news-nightly-set.jpg',True)
@@ -142,14 +156,17 @@ if mode==None or url==None or len(url)<1:
         CATEGORIES()
        
 elif mode==1:
+        ua.update("ewtn","index")
         print "EWTNplayer mode 1"+url
         INDEX(url)
         
 elif mode==2:
+        ua.update("ewtn",url)
         print "EWTNplayer mode 2"+url
         VIDEOLINKS(url,name)
 
 elif mode==3:
+        ua.update("ewtn","chaplet")
         print "EWTNplayer mode 3 "+url
 # you need a function that just plays the URL and not send it to youtube
 # plugin like v1.0.0 stuff
