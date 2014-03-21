@@ -13,7 +13,7 @@ import random
 VERSION = '1'
 UATRACKER = 'UA-49026691-1'
 APPNAME = 'OpenView'
-APPVERSION = '1.0.7'
+APPVERSION = '1.0.9'
 ENDPOINT = 'http://www.google-analytics.com/collect'
 
 ################################################################################
@@ -51,7 +51,7 @@ def getserial():
 
 def update(category, action, value = "0"):
 
-        print "OV - this is ua.py"
+#        print "OV - this is ua.py"
 
         payload = ENDPOINT + "?" + \
             "v=" + VERSION + \
@@ -71,12 +71,12 @@ def update(category, action, value = "0"):
                 req = urllib2.Request(payload)
                 req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3')
                 responseUA = urllib2.urlopen(req)
-                w = responseUA.geturl()
-                x = responseUA.getcode()
-                y = responseUA.info()
-                print w
-                print x
-                print y
+#                w = responseUA.geturl()
+#                x = responseUA.getcode()
+#                y = responseUA.info()
+#                print w
+#                print x
+#                print y
                 
         except:
 

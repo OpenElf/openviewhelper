@@ -1,3 +1,11 @@
+[B]v1.0.9 (21 March 2014):[/B]
+  - Fixed updatefromremote.py import UA new update bug
+  - All home portals video and music UA implemented
+  - Fixed bugs when not connected to internet
+  - Fixed bugs in updater, needs an enhancement
+
+
+
 [B]v1.0.8 (19 March 2014):[/B]
   - UA added ua.py
 

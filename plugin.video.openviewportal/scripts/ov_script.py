@@ -39,7 +39,12 @@ def broadcastMessage():
 
         req = urllib2.Request(url)
         req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3')
-        response = urllib2.urlopen(req)
+        try:
+            response = urllib2.urlopen(req)
+        except:
+            print 'OV - No broadcast sent during boot, could not connect to github'
+            return False
+
         link=response.read()
         response.close()
 

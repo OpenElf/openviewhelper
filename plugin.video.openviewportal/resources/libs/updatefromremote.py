@@ -10,6 +10,15 @@ import xbmc
 
 ########################################################################
 
+
+# set up UA
+
+ovpath = '/home/pi/.xbmc/addons/plugin.video.openviewportal/'
+sys.path.insert( 0,os.path.join( ovpath, 'resources', 'libs' ) )
+import ua
+
+
+
 # Connection information
 
 server = 'ftp.openviewrepo.x10.mx'
@@ -44,10 +53,19 @@ def getupdaterxmlfile():
     os.chdir(ovxmlupdaterpath)
  
 # Establish the connection
-    ftp = ftplib.FTP(server)
+
+    ftp = ftplib.FTP()
+    
+    try:
+        ftp.connect(server)
+    except:
+        print 'OV - cannot connect to FTP server'
+        ua.update("exception","ftpconnect")        
+        return False
+
     if not ftp.login(username, password):
-        print 'OV - updatefromremote.py - http://openviewrepo.x10.mx/ Down'
-        ua.update("exception","x10down")
+        print 'OV - login failed to FTP server'
+        ua.update("exception","ftplogin")
         return False
         
  
@@ -66,7 +84,7 @@ def getupdaterxmlfile():
 # all files
     for filename in ftp.nlst(xmlupdaterfile):
         fhandle = open(filename, 'wb')
-        print 'OV - updatefromremote.py - Getting ' + filename
+        print 'OV - updatefromremote.py - Getting ' + xmldirectoryonserver + filename
         ftp.retrbinary('RETR ' + filename, fhandle.write)
         fhandle.close()
     return True
@@ -204,7 +222,7 @@ def update():
         # copy files from server to OV
         for filename in ftp.nlst(server_file):
             fhandle = open(filename, 'wb')
-            print 'OV - updatefromremote.py - Getting ' + filename
+            print 'OV - updatefromremote.py - Getting ' + server_dir + "/" + filename
             ua.update("openview","ftpupdate")
             ftp.retrbinary('RETR ' + filename, fhandle.write)
             fhandle.close()
