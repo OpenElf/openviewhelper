@@ -1,5 +1,5 @@
-<?xml version="1.1" encoding="UTF-8" standalone="yes"?>
-<addon id="repository.openviewhelper" name="OpenView Helper" version="1.0" provider-name="OpenElf">
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="repository.openviewhelper" name="OpenView Helper" version="1.1" provider-name="OpenElf">
 	<extension point="xbmc.addon.repository" name="OpenElf Addon Repository">
 		<info compressed="false">http://raw.github.com/OpenElf/openviewhelper/master/addons.xml</info>
 		<checksum>http://raw.github.com/OpenElf/openviewhelper/master/addons.xml.md5</checksum>
