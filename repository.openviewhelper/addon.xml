@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="repository.openviewhelper" name="OpenElf's Addon Repository" version="1.0" provider-name="OpenElf">
-	<extension point="xbmc.addon.repository" name="OpenElf's Addon Repository">
-		<info compressed="false">http://github.com/OpenElf/openviewhelper/raw/master/addons.xml</info>
-		<checksum>http://github.com/OpenElf/openviewhelper/raw/master/addons.xml.md5</checksum>
-		<datadir zip="true">http://github.com/OpenElf/openviewhelper/raw/master/zips</datadir>
+<?xml version="1.1" encoding="UTF-8" standalone="yes"?>
+<addon id="repository.openviewhelper" name="OpenView Helper" version="1.0" provider-name="OpenElf">
+	<extension point="xbmc.addon.repository" name="OpenElf Addon Repository">
+		<info compressed="false">http://raw.github.com/OpenElf/openviewhelper/master/addons.xml</info>
+		<checksum>http://raw.github.com/OpenElf/openviewhelper/master/addons.xml.md5</checksum>
+		<datadir zip="true">http://raw.github.com/OpenElf/openviewhelper/master/zips</datadir>
 	</extension>
 	<extension point="xbmc.addon.metadata">
-		<summary>Install OpenView Helper Addons</summary>
-		<description>Download and install addons from OpenElf.......For Support Visit http://openviewhelper.blogspot.co.uk/</description>
+		<summary>Addons specifically for OpenView only</summary>
+		<description>Download and install addons from OpenElf for the OpenView platform only</description>
 		<platform>all</platform>
 	</extension>
 </addon>
