@@ -54,8 +54,7 @@ import updatefromremote
 import ua
 
 # update
-updatefromremote.begin()
-
+#updatefromremote.begin()
 
 # global variables used within many functions
 
@@ -198,6 +197,10 @@ def showMessage():
         return True
 
 
+# from server
+#showMessage()
+
+
 # gettingstarted(url) lists all the SD content that is shipped
 # with the product. The content is NOT within the OV addon.  The content
 # is located at /home/pi/videos and is pre-installed on the SD card.
@@ -261,13 +264,13 @@ def addDirxml(url):
         ua.update("openview","status")
 
         # update
-        updatefromremote.begin()
+#        updatefromremote.begin()
 
         xmlurl = url
 
 # Display Important OpenView Annoucements to the user using dialog boxes
 
-        showMessage()
+#        showMessage()
 
 # Display OpenView Licence
 
@@ -388,6 +391,10 @@ class main (object):
     """Call a function based on XBMC callback string sys.argv[2]"""
     def __init__(self):
         global action
+        updatefromremote.begin()
+        # from server
+        showMessage()
+        
         params = {}
 
 #        print "main() sys.argv[2] is " +sys.argv[2]

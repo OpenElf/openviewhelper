@@ -22,6 +22,7 @@ sys.path.insert( 0,os.path.join( ovpath, 'resources', 'libs' ) )
 # import ov lib
 
 import ua
+import updatefromremote
 
 # update ua
 
@@ -126,4 +127,7 @@ if hardwarekey != softwarekey:
 # broadcast message
 
 broadcastMessage()
+
+
+
            
