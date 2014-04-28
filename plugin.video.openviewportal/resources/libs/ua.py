@@ -13,7 +13,7 @@ import random
 VERSION = '1'
 UATRACKER = 'UA-49026691-1'
 APPNAME = 'OpenView'
-APPVERSION = '1.0.10'
+APPVERSION = '1.0.11'
 ENDPOINT = 'http://www.google-analytics.com/collect'
 
 ################################################################################

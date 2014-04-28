@@ -22,7 +22,7 @@
 
 <addon id="plugin.video.openviewportal"
        name="OpenView"
-       version="1.0.10"
+       version="1.0.11"
        provider-name="OpenView Helper">
   <requires>
         <import addon="xbmc.python" version="2.1.0"/>

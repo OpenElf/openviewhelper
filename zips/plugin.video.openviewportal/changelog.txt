@@ -1,3 +1,6 @@
+[B]v1.0.11 (28 April 2014):[/B]
+  - Stop update from remote as x10 ftp down.
+
 [B]v1.0.10 (24 March 2014):[/B]
   - Minor bug fix to stop too many OV update checks.
 

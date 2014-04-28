@@ -391,7 +391,10 @@ class main (object):
     """Call a function based on XBMC callback string sys.argv[2]"""
     def __init__(self):
         global action
-        updatefromremote.begin()
+
+# the x10 ftp is down and this causes the whole portal to error
+# need to fix this 28 april
+#        updatefromremote.begin()
         # from server
         showMessage()
         
